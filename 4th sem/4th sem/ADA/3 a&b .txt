@@ -1,0 +1,109 @@
+3a. Design and implement C/C++ Program to solve All-Pairs Shortest Paths problem using Floyd's
+algorithm.
+3b. Design and implement C/C++ Program to find the transitive closure using Warshal's algorithm.
+
+Floyd's algorithm.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	int iN, i, j, k;
+	int iaFloyd[10][10], iaCost[10][10];
+	printf("n*********************************************************");
+	printf("n*tPROGRAM TO IMPLEMENT FLOYD'S ALGORITHMt*n");
+	printf("*********************************************************");
+	printf("nEnter the number of verticesn");
+	scanf("%d",&iN);
+	printf("nEnter the Cost adjacency Matrixn");
+	for(i=0;i<iN;i++)
+		for(j=0;j<iN;j++)
+			scanf("%d",&iaCost[i][j]);
+	printf("nInput Graphn");
+	for(i=0;i<iN;i++)
+	{
+		for(j=0;j<iN;j++)
+		{
+			printf("%dt",iaCost[i][j]);
+		}
+		printf("n");
+	}
+	printf("n");
+	for(i=0;i<iN;i++)
+	{
+		for(j=0;j<iN;j++)
+		{
+			iaFloyd[i][j] = iaCost[i][j];
+		}
+	}
+	for(k=0;k<iN;k++)
+	{
+		for(i=0;i<iN;i++)
+		{
+			for(j=0;j<iN;j++)
+			{
+				if(iaFloyd[i][j] > (iaFloyd[i][k] + iaFloyd[k][j]))
+					iaFloyd[i][j] = (iaFloyd[i][k] + iaFloyd[k][j]);
+			}
+		}
+	}
+	printf("nAll Pair Shortest Path Matrixn");
+	for(i=0;i<iN;i++)
+	{
+		for(j=0;j<iN;j++)
+		{
+			printf("%dt",iaFloyd[i][j]);
+		}
+		printf("n");
+	}
+	printf("n");
+	return 0;
+}
+
+
+Warshal's algorithm.
+
+#include <stdio.h>
+const int MAX = 100;
+void WarshallTransitiveClosure(int graph[MAX][MAX], int numVert);
+
+int main(void)
+{
+	int i, j, numVert;
+	int graph[MAX][MAX];
+	printf("Warshall's Transitive Closuren");
+	printf("Enter the number of vertices : ");
+	scanf("%d",&numVert);
+	printf("Enter the adjacency matrix :-n");
+	for (i=0; i<numVert; i++)
+		for (j=0; j<numVert; j++)
+			scanf("%d",&graph[i][j]);
+	WarshallTransitiveClosure(graph, numVert);
+	printf("nThe transitive closure for the given graph is :-n");
+	for (i=0; i<numVert; i++)
+	{
+		for (j=0; j<numVert; j++)
+		{
+			printf("%dt",graph[i][j]);
+		}
+		printf("n");
+	}
+	return 0;
+}
+
+void WarshallTransitiveClosure(int graph[MAX][MAX], int numVert)
+{
+	int i,j,k;
+	for (k=0; k<numVert; k++)
+	{
+		for (i=0; i<numVert; i++)
+		{
+			for (j=0; j<numVert; j++)
+			{
+				if (graph[i][j] || (graph[i][k] && graph[k][j]))
+					graph[i][j] = 1;
+			}
+		}
+	}
+}

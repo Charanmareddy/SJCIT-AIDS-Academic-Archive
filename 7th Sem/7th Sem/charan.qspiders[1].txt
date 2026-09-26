@@ -1,0 +1,603 @@
+Question -1:
+-------------
+In school, students follow a fixed routine in the morning assembly, like first praying, then saying the pledge, singing a song, and 
+finally doing exercises. Now, to test if students can stay disciplined and not get confused, the teacher asks them to repeat the whole 
+routine again immediately after finishing it. So instead of doing the steps only once, they do them twice in the same order without any change.
+This is just like how software testers check a system by running the same set of steps two times in a row to see if everything still works correctly.
+
+
+
+
+In school, students follow a fixed routine in the morning assembly, like first praying, then saying the pledge, singing a song, and 
+finally doing exercises. Now, to test if students can stay disciplined and not get confused, the teacher asks them to repeat the whole 
+routine again immediately after finishing it. So instead of doing the steps only once, they do them twice in the same order without any change.
+This is just like how software testers check a system by running the same set of steps two times in a row to see if everything still works correctly.
+  
+
+
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        List<Integer> nums = new ArrayList<>();
+        nums.add(10)
+        nums.add(20)
+        nums.add(30)
+
+        List<Integer> ans = new ArrayList<>();
+
+        // Add elements twice
+        for (int i = 0; i < nums.size(); i++) {
+            ans.add(nums.get(i));
+        }
+        for (int i = 0; i < nums.size(); i++) {
+            ans.add(nums.get(i));
+        }
+
+        System.out.println("Original: " + nums);
+        System.out.println("Concatenated: " + ans);
+    }
+}
+
+
+
+Suppose in a hospital database, all patient IDs are stored in a sorted list. Due to repeated entries in the system, the same patient ID may appear multiple times. 
+For example, the list could look like [101, 101, 102, 103, 103, 103, 104]. To generate accurate reports and avoid counting the same patient more than once, 
+the duplicates must be removed while keeping the order of IDs. After removing duplicates, the list will become [101, 102, 103, 104], which represents only the unique patients.
+This is exactly the scenario for the "Remove Duplicates from Sorted Array" problem.
+
+
+
+
+
+
+import java.util.*;
+
+public class Example  {
+    public static void main(String[] args) {
+        int[] nums = {101, 101, 102, 103, 103, 103, 104};
+
+        Vector<Integer> v = new Vector<>();
+
+        // Collect unique elements
+        for (int num : nums) {
+            if (!v.contains(num)) {
+                v.add(num);
+            }
+        }
+
+        // Copy back unique elements into nums
+        for (int i = 0; i < v.size(); i++) {
+            nums[i] = v.get(i);
+        }
+
+        int newLength = v.size();
+
+        // Print the updated array
+        System.out.print("Unique elements: ");
+        for (int i = 0; i < newLength; i++) {
+            System.out.print(nums[i] + " ");
+        }
+    }
+}
+
+
+
+
+
+Imagine you are managing a playlist in a music app. The playlist is stored as an array of songs in order. Now, the app introduces a feature where users can rotate
+the playlist so that the last few songs come to the front while keeping the order intact. For example, if the playlist is [Song1, Song2, Song3, Song4, Song5, Song6, Song7] and 
+the user chooses to rotate it by 3 positions, the last three songs move to the front, and the playlist becomes [Song5, Song6, Song7, Song1, Song2, Song3, Song4]. This way, 
+the user can quickly bring their favorite songs to the beginning without manually rearranging them. This is exactly the scenario for the "Rotate Array" problem.
+
+
+
+
+import java.util.*;
+
+public class example {
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        int k = 3;
+
+        Vector<Integer> v = new Vector<>();
+        for (int num : nums) {
+            v.add(num);
+        }
+
+        k = k % v.size();
+
+        for (int i = 0; i < k; i++) {
+            int last = v.remove(v.size() - 1);
+            v.insertElementAt(last, 0);
+        }
+
+        for (int i = 0; i < v.size(); i++) {
+            nums[i] = v.get(i);
+        }
+
+        // Print rotated array
+        System.out.print("Rotated Array: ");
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+
+
+
+Imagine you are working on a chat application where users send text messages. Sometimes, to detect spam or to generate quick user insights, the system needs to find 
+the first unique character in a message. For example, if a user sends the message "swiss", most characters repeat, but the first character that appears only once is 'w'. 
+Identifying this helps the app highlight unique patterns in messages or even create short unique tags for users.
+
+
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        String s = "swiss";
+
+        Vector<Integer> freq = new Vector<>(Collections.nCopies(26, 0));
+
+        // Count frequency of each character
+        for (char c : s.toCharArray()) {
+            freq.set(c - 'a', freq.get(c - 'a') + 1);
+        }
+
+        // Find first unique character
+        int index = -1;
+        for (int i = 0; i < s.length(); i++) {
+            if (freq.get(s.charAt(i) - 'a') == 1) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            System.out.println("First unique character: '" + s.charAt(index) + "' at index " + index);
+        } else {
+            System.out.println("No unique character found.");
+        }
+    }
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Question -2:
+-------------
+
+Imagine you are running a race with your friends, and after every lap, you note down how many minutes you took. But instead of just writing 
+each lap’s time separately, you also want to know the total time so far after each lap. For example, if the first lap took 2 minutes, the second 
+lap took 3 minutes, and the third lap took 4 minutes, then your record should look like: after lap 1 → 2 minutes, after lap 2 → 2+3=5 minutes, after 
+lap 3 → 2+3+4=9 minutes. This way, you always know the cumulative total at every point. That’s the same idea DevOps uses to track how the total system 
+load builds up when microservices take time to respond.
+
+
+
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        List<Integer> nums = new ArrayList<>();
+        nums.add(2);
+        nums.add(3);
+        nums.add(5);
+
+        List<Integer> runSum = new ArrayList<>();
+        int sum = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            sum += nums.get(i);
+            runSum.add(sum);
+        }
+
+        System.out.println("Original: " + nums);
+        System.out.println("Running Sum: " + runSum);
+    }
+}
+
+
+
+Question -3:
+------------
+
+Imagine you and your friends are playing a game where each of you has some points. The teacher decides to give everyone a few extra bonus points. 
+After adding the bonus, some of you might catch up to the top scorer or even beat them. 
+The teacher wants to know which students could become leaders once the bonus points are given. 
+That’s the same idea HR is using in a hackathon — they want to find employees who can reach the top after adding bonus points.
+
+
+
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        List<Integer> points = new ArrayList<>();
+        points.add(2);
+        points.add(3);
+        points.add(5);
+        points.add(1);
+
+        int bonus = 3;
+        int max = Collections.max(points);
+
+        List<Boolean> result = new ArrayList<>();
+        for (int i = 0; i < points.size(); i++) {
+            result.add(points.get(i) + bonus >= max);
+        }
+
+        System.out.println("Original: " + points);
+        System.out.println("Result: " + result);
+    }
+}
+
+
+
+
+
+
+
+
+Question-1 : 
+----------------------
+
+Imagine you and your friends stand in a line to buy movie tickets. The first person who comes stands first, and others join behind, 
+so the line shows the order of arrival. But now the teacher says, "Let’s check who came last and process them first." That means the line 
+must be reversed, so the last person becomes first and the first person becomes last.  
+
+
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+
+        LinkedList<Integer> reversed = new LinkedList<>();
+        for (int i = list.size()-1; i >= 0; i--) {
+            reversed.add(list.get(i));
+        }
+
+        System.out.println("Original: " + list);
+        System.out.println("Reversed: " + reversed);
+    }
+}
+
+
+
+
+Imagine you and your friends are sitting in a row sharing chocolates. The teacher says, “I want to divide the chocolates into two equal groups.” 
+To do this, the teacher looks for the middle chocolate in the row. If there are an odd number of chocolates, the middle one is easy to find. 
+But if there are an even number, the teacher takes the second middle chocolate to make the split.
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+        int n = list.size();
+        int midIndex = n / 2;
+        int middle = list.get(midIndex);
+
+        System.out.println("List: " + list);
+        System.out.println("Middle Element: " + middle);
+    }
+}
+
+
+
+
+Think of writing a word on the board. Now your teacher asks you to check if the word looks the same when you read it backward. 
+For example, if you write "radar", it still reads "radar" when read from the other side, so it’s special and called a palindrome. 
+But if you write "school", when read backward it becomes "loohcs", which is not the same. In the program, the word is stored like 
+children standing in a line one after another (a LinkedList), and we just check if reading them from the front and from the back gives
+the same result.
+
+import java.util.*;
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        LinkedList<Character> word = new LinkedList<>();
+        word.add('r');
+        word.add('a');
+        word.add('d');
+        word.add('a');
+        word.add('r');
+
+        boolean isPalindrome = true;
+        int i = 0, j = word.size() - 1;
+
+        while (i < j) {
+            if (!word.get(i).equals(word.get(j))) {
+                isPalindrome = false;
+                break;
+            }
+            i++;
+            j--;
+        }
+
+        System.out.println("Word: " + word);
+        System.out.println("Is Palindrome? " + isPalindrome);
+    }
+}
+
+import java.util.Scanner;
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input
+        System.out.print("Enter a word: ");
+        String word = sc.nextLine();
+
+        // Reverse using StringBuilder
+        String reversed = new StringBuilder(word).reverse().toString();
+
+        // Check if it's a palindrome
+        if (word.equals(reversed)) {
+            System.out.println("Yes, it's a palindrome.");
+        } else {
+            System.out.println("No, it's not a palindrome.");
+        }
+    }
+}
+
+Suppose in a hospital database, all patient IDs are stored in a sorted list. Due to repeated entries in the system, the same patient ID may appear multiple times. 
+For example, the list could look like [101, 101, 102, 103, 103, 103, 104]. To generate accurate reports and avoid counting the same patient more than once, 
+the duplicates must be removed while keeping the order of IDs. After removing duplicates, the list will become [101, 102, 103, 104], which represents only the unique patients.
+This is exactly the scenario for the "Remove Duplicates from Sorted Array" problem.
+
+
+
+
+
+
+import java.util.*;
+
+public class Example  {
+    public static void main(String[] args) {
+        int[] nums = {101, 101, 102, 103, 103, 103, 104};
+
+        Vector<Integer> v = new Vector<>();
+
+        // Collect unique elements
+        for (int num : nums) {
+            if (!v.contains(num)) {
+                v.add(num);
+            }
+        }
+
+        // Copy back unique elements into nums
+        for (int i = 0; i < v.size(); i++) {
+            nums[i] = v.get(i);
+        }
+
+        int newLength = v.size();
+
+        // Print the updated array
+        System.out.print("Unique elements: ");
+        for (int i = 0; i < newLength; i++) {
+            System.out.print(nums[i] + " ");
+        }
+    }
+}
+
+
+
+
+
+Imagine you are managing a playlist in a music app. The playlist is stored as an array of songs in order. Now, the app introduces a feature where users can rotate
+the playlist so that the last few songs come to the front while keeping the order intact. For example, if the playlist is [Song1, Song2, Song3, Song4, Song5, Song6, Song7] and 
+the user chooses to rotate it by 3 positions, the last three songs move to the front, and the playlist becomes [Song5, Song6, Song7, Song1, Song2, Song3, Song4]. This way, 
+the user can quickly bring their favorite songs to the beginning without manually rearranging them. This is exactly the scenario for the "Rotate Array" problem.
+
+
+
+
+import java.util.*;
+
+public class example {
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        int k = 3;
+
+        Vector<Integer> v = new Vector<>();
+        for (int num : nums) {
+            v.add(num);
+        }
+
+        k = k % v.size();
+
+        for (int i = 0; i < k; i++) {
+            int last = v.remove(v.size() - 1);
+            v.insertElementAt(last, 0);
+        }
+
+        for (int i = 0; i < v.size(); i++) {
+            nums[i] = v.get(i);
+        }
+
+        // Print rotated array
+        System.out.print("Rotated Array: ");
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+
+
+
+Imagine you are working on a chat application where users send text messages. Sometimes, to detect spam or to generate quick user insights, the system needs to find 
+the first unique character in a message. For example, if a user sends the message "swiss", most characters repeat, but the first character that appears only once is 'w'. 
+Identifying this helps the app highlight unique patterns in messages or even create short unique tags for users.
+
+
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        String s = "swiss";
+
+        Vector<Integer> freq = new Vector<>(Collections.nCopies(26, 0));
+
+        // Count frequency of each character
+        for (char c : s.toCharArray()) {
+            freq.set(c - 'a', freq.get(c - 'a') + 1);
+        }
+
+        // Find first unique character
+        int index = -1;
+        for (int i = 0; i < s.length(); i++) {
+            if (freq.get(s.charAt(i) - 'a') == 1) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            System.out.println("First unique character: '" + s.charAt(index) + "' at index " + index);
+        } else {
+            System.out.println("No unique character found.");
+        }
+    }
+} 
+
+
+
+leetcode 26
+
+
+public boolean isValid(String s) {
+		Stack<Character> st = new Stack<>();
+		for(char c  : s.toCharArray())
+		{
+			if(c == '[' || c == '{' || c == '(')
+				st.push(c);
+			else {
+				if(st.isEmpty())
+				return false ;
+			char top = st.pop();
+            if ((c == ')' && top != '(') ||
+                (c == '}' && top != '{') ||
+                (c == ']' && top != '[')) {
+                return false;
+               }
+			}
+		}
+		      return st.isEmpty();
+	}
+
+
+
+leetcode 232
+
+class MyQueue {
+    private Stack<Integer> input;
+    private Stack<Integer> output;
+
+    public MyQueue() {
+        input = new Stack<>();
+        output = new Stack<>();
+    }
+
+    public void push(int x) {
+        input.push(x);
+    }
+
+    public int pop() {
+        peek();
+        return output.pop();
+    }
+
+    public int peek() {
+        if (output.isEmpty()) {
+            while (!input.isEmpty()) {
+                output.push(input.pop());
+            }
+        }
+        return output.peek();
+    }
+
+    public boolean empty() {
+        return input.isEmpty() && output.isEmpty();
+    }
+}
+
+leetcode 155
+   Stack<Integer> stack = new Stack<>();
+    Stack<Integer> minStack = new Stack<>();
+
+    // Push element
+    public void push(int val) {
+        stack.push(val);
+
+        // If minStack is empty or val <= current min, push it also
+        if (minStack.isEmpty() || val <= minStack.peek()) {
+            minStack.push(val);
+        }
+    }
+
+    // Pop element
+    public void pop() {
+        int removed = stack.pop();
+
+        // If removed element is the current min, pop it from minStack too
+        if (removed == minStack.peek()) {
+            minStack.pop();
+        }
+    }
+
+    // Return top element
+    public int top() {
+        return stack.peek();
+    }
+
+    // Return minimum element
+    public int getMin() {
+        return minStack.peek();
+    }
+
