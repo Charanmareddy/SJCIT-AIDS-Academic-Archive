@@ -73,3 +73,9 @@ Click through any of the folder links above to view PDF documents, Word files, a
 To clone all academic materials directly to your local system, run the following command in your terminal:
 ```bash
 git clone [https://github.com/Charanmareddy/SJCIT-AIDS-Academic-Archive.git](https://github.com/Charanmareddy/SJCIT-AIDS-Academic-Archive.git)
+
+```
+⚠️ Academic Integrity & Disclaimer
+Note for Juniors: These materials are curated and shared exclusively for educational, reference, and guidance purposes. Please adhere strictly to SJCIT academic integrity policies—do not directly copy or plagiarize project reports, code, or documentation for official university submissions.
+
+Maintained with ❤️ by Mareddy Charan | AI & DS, SJCIT
